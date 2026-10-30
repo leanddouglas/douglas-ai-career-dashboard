@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1b1e">
+<title>Douglas · Human-Centered AI Career Dashboard</title>
+<style>
+:root{
+  --ink:#102326;--deep:#0d1b1e;--deep2:#142b2e;--paper:#f4f0e7;--paper2:#ebe5d8;
+  --orange:#f26a2e;--orange2:#ff8a4c;--mint:#70d6bd;--sky:#9bd8e5;--gold:#e9bc62;
+  --muted:#617174;--line:rgba(16,35,38,.16);--white:#fffdf7;--red:#c64b43;
+  --shadow:0 18px 50px rgba(13,27,30,.14);--r:24px;--fast:160ms;--slow:420ms;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,a{font:inherit}a{color:inherit}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.rail{position:sticky;top:0;height:100vh;background:var(--deep);color:#e9f3ef;padding:28px 22px;display:flex;flex-direction:column;z-index:10}.brand{display:flex;gap:13px;align-items:center}.mark{width:46px;height:46px;border-radius:15px;background:var(--orange);display:grid;place-items:center;font-weight:900;color:#1f1712;box-shadow:0 8px 30px rgba(242,106,46,.25)}.brand strong{font-size:15px;letter-spacing:.02em}.brand small{display:block;color:#94aaa8;margin-top:2px}
+.nav{display:grid;gap:7px;margin:40px 0}.nav button{border:0;background:transparent;color:#9db1b0;text-align:left;padding:11px 13px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:var(--fast)}.nav button:hover,.nav button:focus-visible{background:#1a373a;color:white;outline:none}.nav button.active{background:#234549;color:white}.nav .dot{width:7px;height:7px;border-radius:50%;background:currentColor}.rail-note{margin-top:auto;border-top:1px solid #284044;padding-top:18px;color:#9fb1b0;font-size:12px}.rail-note b{color:#fff}.rail-actions{display:flex;gap:8px;margin-top:14px}.rail-actions button{border:1px solid #355256;color:#d9e7e4;background:transparent;border-radius:10px;padding:8px 10px;cursor:pointer}.rail-actions button:hover{background:#1a373a}
+main{min-width:0}.view{display:none;animation:rise var(--slow) ease}.view.active{display:block}@keyframes rise{from{opacity:.25;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{background:var(--deep);color:#f8f5ed;min-height:320px;padding:34px clamp(28px,6vw,90px) 26px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:460px;height:460px;border:1px solid rgba(112,214,189,.16);border-radius:50%;right:-120px;top:-230px;box-shadow:0 0 0 70px rgba(112,214,189,.028),0 0 0 140px rgba(112,214,189,.018)}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--mint);font-weight:800}.hero h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(40px,5vw,60px);line-height:.96;max-width:920px;margin:12px 0 14px;letter-spacing:-.04em}.hero h1 em{color:var(--orange2);font-style:normal}.hero p{max-width:760px;color:#c4d2d0;font-size:16px;margin:0 0 6px}.purpose{display:inline-flex;gap:10px;align-items:center;border-left:3px solid var(--orange);padding:6px 12px;margin-top:6px;background:rgba(255,255,255,.04);border-radius:0 12px 12px 0;color:#edf5f2;font-size:15px}.date-pill{position:relative;color:#a8bbb8;font-size:12px;z-index:2;margin-top:8px}
+.wrap{max-width:1200px;margin:auto;padding:52px clamp(22px,5vw,72px) 80px}.kicker{display:flex;gap:12px;align-items:center;color:var(--orange);text-transform:uppercase;letter-spacing:.14em;font-weight:850;font-size:12px}.kicker:before{content:"";width:34px;height:2px;background:var(--orange)}h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(32px,4vw,52px);line-height:1.03;letter-spacing:-.025em;margin:12px 0 20px}h3{font-size:19px;line-height:1.25}p.lede{font-size:18px;color:#526366;max-width:820px}
+.decision{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:start;margin-top:-40px;position:relative;z-index:3}.verdict{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:25px}.verdict .flag{display:inline-flex;gap:7px;align-items:center;color:#5b5f48;background:#f7edc9;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:800}.verdict h3{font:500 26px/1.05 Georgia,serif;margin:14px 0 8px}.verdict p{margin:0;color:#566467;font-size:15px}.next{background:var(--orange);border-radius:var(--r);padding:23px;color:#241913;box-shadow:var(--shadow);position:relative;overflow:hidden}.next:before{content:"01";font:700 90px/1 Georgia,serif;position:absolute;right:12px;bottom:-18px;color:rgba(255,255,255,.15)}.next small{font-weight:850;text-transform:uppercase;letter-spacing:.13em}.next h3{font-size:22px;max-width:360px;margin:13px 0}.copy{border:1px solid rgba(0,0,0,.35);background:transparent;border-radius:11px;padding:8px 11px;cursor:pointer;font-weight:800}.copy:hover{background:rgba(255,255,255,.2)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:58px 0}.metric{padding:26px 22px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric b{font:500 44px/1 Georgia,serif}.metric span{display:block;color:var(--muted);font-size:13px;margin-top:9px}.metric.warn b{color:var(--red)}
+.bridge{background:var(--deep2);color:white;border-radius:30px;padding:34px;overflow:hidden}.bridge-head{display:flex;justify-content:space-between;gap:20px}.bridge-head p{color:#a9bcba;max-width:600px}.bridge svg{width:100%;height:auto;margin-top:12px}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#728284}.legend span{display:flex;align-items:center;gap:6px}.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}.verified{background:var(--mint)}.conditional{background:var(--gold)}.blocked{background:var(--red)}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:18px;margin:30px 0;padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.36)}.callout .num{font:500 44px/1 Georgia,serif;color:var(--orange)}.callout h3{margin:0 0 5px}.callout p{margin:0;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}.controls{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:transparent;border-radius:99px;padding:9px 13px;cursor:pointer;color:#4c5d60}.chip.active,.chip:hover{background:var(--deep);color:white;border-color:var(--deep)}
+.program-list{display:grid;gap:14px}.program{background:var(--white);border:1px solid rgba(16,35,38,.11);border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(13,27,30,.05)}.program summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:58px 1fr auto;gap:18px;align-items:center;padding:22px}.program summary::-webkit-details-marker{display:none}.rank{width:50px;height:50px;border-radius:15px;background:var(--paper2);display:grid;place-items:center;font:500 22px Georgia,serif}.program h3{margin:0 0 5px}.program .meta{color:var(--muted);font-size:13px}.status{font-size:12px;font-weight:850;border-radius:99px;padding:7px 10px;white-space:nowrap}.status.cond{background:#f5e8bd;color:#65531f}.status.stop{background:#f6d6d1;color:#7a2d28}.status.go{background:#cdeee5;color:#1b5a4b}.program-body{border-top:1px solid var(--line);padding:22px 26px 28px 98px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.program-body h4{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--orange)}.program-body p,.program-body li{font-size:14px;color:#536164}.program-body ul{margin:0;padding-left:18px}.source-link{display:inline-block;margin-top:8px;color:#1e656d;font-weight:800;text-underline-offset:3px}.program[data-kind].hidden{display:none}
+.jobs-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px}.evidence-panel{background:var(--deep);color:white;border-radius:28px;padding:30px}.evidence-panel h3{font:500 30px Georgia,serif}.bar-row{margin:20px 0}.bar-label{display:flex;justify-content:space-between;font-size:13px;color:#c3d0ce;margin-bottom:7px}.bar{height:12px;border-radius:99px;background:#203a3e;overflow:hidden}.bar i{display:block;height:100%;background:var(--orange);border-radius:inherit}.bar.alt i{background:var(--mint)}.job-findings{display:grid;gap:14px}.finding{padding:22px;border-top:1px solid var(--line)}.finding:first-child{border-top:0}.finding b{color:var(--orange);font:500 30px Georgia,serif;float:left;margin-right:14px}.finding h3{margin:3px 0 7px}.finding p{margin:0;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.skill{background:var(--white);border-radius:18px;padding:20px;border:1px solid var(--line)}.skill-top{display:flex;justify-content:space-between;align-items:center}.skill .tag{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#5c6f72}.skill p{color:var(--muted);font-size:14px}.ladder{display:flex;gap:5px}.ladder i{height:7px;flex:1;background:#d6d6cd;border-radius:5px}.ladder i.on{background:var(--mint)}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:24px}.week{background:var(--deep);color:white;border-radius:28px;padding:30px}.hours{display:flex;height:54px;border-radius:14px;overflow:hidden;margin:24px 0}.hours .focus{width:80%;background:var(--mint);color:#15322f;display:grid;place-items:center;font-weight:900}.hours .buffer{width:20%;background:var(--orange);display:grid;place-items:center;font-weight:900}.week p{color:#b1c1bf}.steps{counter-reset:steps;display:grid;gap:10px}.step{position:relative;padding:18px 18px 18px 62px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.45)}.step:before{counter-increment:steps;content:counter(steps);position:absolute;left:18px;top:17px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--orange);font-weight:900}.step h3{margin:0 0 5px}.step p{margin:0;color:var(--muted);font-size:14px}
+.tree{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.branch{background:var(--white);border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:16px;padding:20px}.branch:nth-child(2){border-top-color:var(--mint)}.branch:nth-child(3){border-top-color:var(--red)}.branch h3{margin-top:0}.branch p{color:var(--muted);font-size:14px}
+.source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.source{background:var(--white);border-radius:18px;padding:22px;border:1px solid var(--line)}.source h3{margin-top:0}.source p{color:var(--muted);font-size:14px}.source a{display:block;color:#1d626a;font-weight:800;margin-top:9px;word-break:break-word}.source .local{color:#7c4b2d}.foot{margin-top:48px;border-top:1px solid var(--line);padding-top:22px;color:#778385;font-size:12px}
+.toast{position:fixed;right:24px;bottom:24px;background:var(--deep);color:white;border-radius:12px;padding:12px 16px;transform:translateY(90px);opacity:0;transition:var(--slow);z-index:30}.toast.show{transform:none;opacity:1}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.rail{position:sticky;height:auto;padding:12px 15px;display:grid;grid-template-columns:auto 1fr auto;align-items:center}.brand small,.rail-note{display:none}.mark{width:38px;height:38px}.nav{display:flex;margin:0 10px;overflow-x:auto}.nav button{white-space:nowrap;padding:9px}.nav button .dot{display:none}.rail-actions{margin:0}.rail-actions button:first-child{display:none}.hero{padding-top:58px}.date-pill{position:static;margin-top:30px}.decision{grid-template-columns:1fr;margin-top:-32px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.jobs-grid,.plan{grid-template-columns:1fr}.program-body{padding-left:26px}.tree{grid-template-columns:1fr}.source-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.rail{grid-template-columns:auto 1fr}.brand strong{display:none}.rail-actions{display:none}.nav{justify-content:space-between;gap:2px;overflow:visible}.nav button{font-size:0;padding:8px 7px}.nav button:after{content:attr(data-short);font-size:10px}.hero{min-height:auto;padding:42px 22px 46px}.hero h1{font-size:44px}.hero p{font-size:16px}.wrap{padding:38px 18px 64px}.decision{margin-top:-24px}.metrics{grid-template-columns:1fr 1fr}.metric{padding:20px 14px}.metric b{font-size:36px}.bridge{padding:22px}.bridge svg{min-width:670px}.bridge .svg-scroll{overflow-x:auto}.program summary{grid-template-columns:48px 1fr}.status{grid-column:2}.program-body{grid-template-columns:1fr;padding:20px}.skills{grid-template-columns:1fr}.section-head{display:block}.controls{margin-top:16px}}
+@media print{.rail,.controls,.copy,.date-pill{display:none!important}.shell{display:block}.view{display:block!important;page-break-after:always}.hero{min-height:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}.decision{margin-top:20px}.program{break-inside:avoid}.program-body{display:grid!important}.wrap{max-width:none;padding:30px}.source a{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="rail" aria-label="Dashboard navigation">
+  <div class="brand"><div class="mark" aria-hidden="true">D</div><div><strong>Career Transition</strong><small>Evidence dashboard</small></div></div>
+  <nav class="nav">
+    <button class="active" data-view="snapshot" data-short="Home"><span class="dot"></span>Snapshot</button>
+    <button data-view="pathways" data-short="Paths"><span class="dot"></span>Pathways</button>
+    <button data-view="jobs" data-short="Jobs"><span class="dot"></span>Job evidence</button>
+    <button data-view="plan" data-short="Plan"><span class="dot"></span>Action plan</button>
+    <button data-view="sources" data-short="Sources"><span class="dot"></span>Sources</button>
+  </nav>
+  <div class="rail-note"><b>Evidence standard</b><br>Verified facts are separated from unresolved admissions, schedules, funding and hiring outcomes.</div>
+  <div class="rail-actions"><button id="printBtn">Print / PDF</button><button id="homeBtn" title="Return to snapshot">↥</button></div>
+</aside>
+<main>
+<section id="snapshot" class="view active">
+  <header class="hero">
+    <div class="eyebrow">Douglas · British Columbia · 10 hours/week</div>
+    <h1>From field service to <em>human-centered AI.</em></h1>
+    <p>An evidence-led transition plan that protects income, tests real capability and turns existing projects into defensible team-ready engineering proof.</p>
+    <div class="purpose">“I build intelligent systems that empower people and make everyday work genuinely easier.”</div>
+    <div class="date-pill">Research snapshot · 22 October 2026</div>
+  </header>
+  <div class="wrap">
+    <div class="decision">
+      <article class="verdict"><span class="flag">● CONDITIONALLY APPROVED DIRECTION</span><h3>One foundation. One targeted AI layer. No certificate collecting.</h3><p>Investigate a part-time public-college software foundation first. Use a short AI credential only after an independent diagnostic shows which gaps are real.</p></article>
+      <article class="next"><small>Next best action</small><h3>Book English and math placement checks before spending on a program.</h3><button class="copy" data-copy="Book Douglas College English and math placement checks, then request a one-course-per-term CSIS schedule compatible with full-time work and a 10-hour weekly study cap.">Copy action</button></article>
+    </div>
+
+    <div class="metrics" aria-label="Key evidence metrics">
+      <div class="metric"><b>4/4</b><span>Research lanes completed</span></div>
+      <div class="metric"><b>12</b><span>Accessible Canadian postings reviewed</span></div>
+      <div class="metric"><b>9</b><span>Employers represented</span></div>
+      <div class="metric warn"><b>2</b><span>Explicit junior/intern roles; both education-gated</span></div>
+    </div>
+
+    <div class="kicker">Career bridge</div><h2>A staged route—not a leap.</h2>
+    <div class="bridge">
+      <div class="bridge-head"><div><h3>Evidence ladder</h3><p>Progress only when the previous stage is demonstrated. Dashed connectors mean “conditional,” not guaranteed.</p></div><div class="legend"><span><i class="verified"></i>verified evidence</span><span><i class="conditional"></i>conditional</span><span><i class="blocked"></i>blocker</span></div></div>
+      <div class="svg-scroll"><svg viewBox="0 0 980 250" role="img" aria-label="Career transition roadmap from existing projects through assessment, education, portfolio and applications">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#70d6bd"/></marker></defs>
+        <path d="M130 126 C220 40 280 210 370 126 S520 40 610 126 S760 210 850 126" fill="none" stroke="#70d6bd" stroke-width="4" stroke-dasharray="9 9" marker-end="url(#arrow)"/>
+        <g font-family="Inter, sans-serif" text-anchor="middle"><g transform="translate(110 126)"><circle r="50" fill="#f26a2e"/><text y="-6" fill="#1d1814" font-weight="800">Existing</text><text y="14" fill="#1d1814" font-size="13">projects</text></g><g transform="translate(310 126)"><circle r="50" fill="#234549" stroke="#70d6bd" stroke-width="2"/><text y="-6" fill="white" font-weight="800">Independent</text><text y="14" fill="#b8cfcc" font-size="13">diagnostic</text></g><g transform="translate(500 126)"><circle r="50" fill="#234549" stroke="#e9bc62" stroke-width="2"/><text y="-6" fill="white" font-weight="800">Software</text><text y="14" fill="#b8cfcc" font-size="13">foundation</text></g><g transform="translate(690 126)"><circle r="50" fill="#234549" stroke="#e9bc62" stroke-width="2"/><text y="-6" fill="white" font-weight="800">Targeted AI</text><text y="14" fill="#b8cfcc" font-size="13">layer</text></g><g transform="translate(870 126)"><circle r="50" fill="#70d6bd"/><text y="-6" fill="#13312d" font-weight="800">Team-ready</text><text y="14" fill="#13312d" font-size="13">evidence</text></g></g>
+      </svg></div>
+    </div>
+
+    <div class="callout"><div class="num">01</div><div><h3>Strongest formal candidate: Douglas College CSIS Diploma</h3><p>Mature admission and part-time study are documented. The unresolved issue is life fit: the reviewed introductory programming sections were daytime, and total weekly workload was not published.</p></div></div>
+    <div class="callout"><div class="num">02</div><div><h3>Strongest market lesson: applied AI is still software engineering</h3><p>The postings repeatedly ask for Python, APIs, data, testing, deployment, integrations, evaluation, security and communication—not prompt-only work.</p></div></div>
+    <div class="callout"><div class="num">03</div><div><h3>Do not mistake portfolio polish for independent mastery</h3><p>Run a no-AI baseline, normal AI-assisted build, then an AI-off transfer-and-defense test. Skip beginner content only where performance is observed twice.</p></div></div>
+  </div>
+</section>
+
+<section id="pathways" class="view">
+  <header class="hero"><div class="eyebrow">Five-candidate decision shortlist</div><h1>Choose the <em>spine</em> before the specialty.</h1><p>These are not five credentials to complete. The first three are foundation candidates; the last two are targeted add-on routes.</p></header>
+  <div class="wrap">
+    <div class="section-head"><div><div class="kicker">Program candidates</div><h2>Fit before prestige.</h2></div><div class="controls" aria-label="Filter pathways"><button class="chip active" data-filter="all">All five</button><button class="chip" data-filter="foundation">Foundation</button><button class="chip" data-filter="addon">AI add-ons</button></div></div>
+    <div class="legend" style="margin-bottom:20px"><span><i class="verified"></i>usable verified evidence</span><span><i class="conditional"></i>important unknowns</span><span><i class="blocked"></i>current constraint conflict</span></div>
+    <div class="program-list">
+      <details class="program" data-kind="foundation" open><summary><span class="rank">1</span><span><h3>Douglas College · Computing Studies & Information Systems Diploma</h3><span class="meta">Foundation · public-college diploma · part-time documented</span></span><span class="status cond">Investigate first</span></summary><div class="program-body"><div><h4>Why it leads</h4><p>Explicit mature admission, part-time enrollment, programming, databases, systems analysis, web/mobile and machine-learning curriculum.</p></div><div><h4>Known friction</h4><ul><li>English proficiency and Grade 11 math/equivalent</li><li>Reviewed intro sections were daytime</li><li>No verified 10-hour total workload</li></ul></div><div><h4>Cost & next proof</h4><p>60-credit base-tuition planning envelope: CAD $7,284–$8,724 before recurring fees and increases. Request a one-course evening/online map.</p><a class="source-link" href="https://www.douglascollege.ca/program/dpcsti" target="_blank" rel="noopener">Official program ↗</a></div></div></details>
+
+      <details class="program" data-kind="foundation"><summary><span class="rank">2</span><span><h3>Langara College · Computer Studies Diploma</h3><span class="meta">Foundation · public-college diploma · flexible entry</span></span><span class="status cond">Strong alternative</span></summary><div class="program-body"><div><h4>Why it fits</h4><p>Mature admission at age 19+, formal diploma, programming, OOP, algorithms, Unix, SQL, web and systems analysis.</p></div><div><h4>Known friction</h4><ul><li>Math prerequisites for required courses</li><li>No verified all-evening/online route</li><li>Prerequisite recency rules</li></ul></div><div><h4>Cost & next proof</h4><p>Official domestic minimum-program tuition estimate: CAD $6,586; extra fees apply. Ask for one-course-per-term schedule and workload.</p><a class="source-link" href="https://langara.ca/programs-courses/computer-studies-diploma" target="_blank" rel="noopener">Official program ↗</a></div></div></details>
+
+      <details class="program" data-kind="foundation"><summary><span class="rank">3</span><span><h3>BCIT · ACIS → Computer Systems Certificate → CST FLEX</h3><span class="meta">Foundation · evening/weekend stack · clear ladder</span></span><span class="status stop">Workload conflict</span></summary><div class="program-body"><div><h4>Why it matters</h4><p>Best documented evening/weekend structure with Python, Java, C, JavaScript, SQL, math, systems analysis, Agile and UX.</p></div><div><h4>Current blocker</h4><ul><li>One 12-week COMP course: 12–15 hours/week</li><li>Strict 10-hour cap is exceeded</li><li>One-course learners must follow ACIS-first instructions</li></ul></div><div><h4>Cost & next proof</h4><p>ACIS under CAD $5,000; CSC budget about CAD $11,000. Ask BCIT for a written workload-safe map before considering it.</p><a class="source-link" href="https://www.bcit.ca/programs/computer-systems-certificate-part-time-5500cert/" target="_blank" rel="noopener">Official program ↗</a></div></div></details>
+
+      <details class="program" data-kind="addon"><summary><span class="rank">4</span><span><h3>IBM · AI Developer → RAG and Agentic AI</h3><span class="meta">Add-on sequence · Coursera completion certificates</span></span><span class="status go">Flexible</span></summary><div class="program-body"><div><h4>Best use</h4><p>Begin with AI Developer only if the diagnostic shows application-development gaps; take the advanced RAG/agentic sequence after foundations.</p></div><div><h4>Research snapshot</h4><ul><li>AI Developer: ~6 months, 4 hours/week</li><li>RAG/Agentic: advanced, ~8 weeks, 3 hours/week</li><li>Portfolio-oriented capstone work</li></ul></div><div><h4>Caution</h4><p>These are course-completion certificates, not proctored industry certifications. Confirm Canadian checkout and do not run both with a college workload.</p><a class="source-link" href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" target="_blank" rel="noopener">Official certificate ↗</a></div></div></details>
+
+      <details class="program" data-kind="addon"><summary><span class="rank">5</span><span><h3>Microsoft · Applied Skills → Azure AI Apps & Agents (AI-103)</h3><span class="meta">Add-on sequence · scenario lab then proctored certification</span></span><span class="status cond">Target-dependent</span></summary><div class="program-body"><div><h4>Best use</h4><p>Choose this only when Azure appears in target postings or Douglas's project stack. Prove a narrow scenario before paying for the broad exam.</p></div><div><h4>Credential distinction</h4><ul><li>Applied Skills: scenario-based lab</li><li>AI-103: role-based certification exam</li><li>Research snapshot showed US$140 for Canada</li></ul></div><div><h4>Caution</h4><p>Cloud badges cannot replace software fundamentals or production evidence. Confirm current exam price and credential status before paying.</p><a class="source-link" href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/" target="_blank" rel="noopener">Official certification ↗</a></div></div></details>
+    </div>
+
+    <div class="callout"><div class="num">+</div><div><h3>Low-risk alternative: Harvard CS50P</h3><p>Free, on-demand Python foundation; approximately 10 weeks at 3–9 hours/week. Use it as a diagnostic or bridge before paying for another beginner credential.</p></div></div>
+  </div>
+</section>
+
+<section id="jobs" class="view">
+  <header class="hero"><div class="eyebrow">Canadian job evidence</div><h1>The market wants <em>reliable builders.</em></h1><p>Twelve accessible postings across nine employers. This is a purposive evidence set, not a representative national labor-market estimate.</p></header>
+  <div class="wrap">
+    <div class="jobs-grid">
+      <article class="evidence-panel"><div class="kicker" style="color:var(--mint)">Sample composition</div><h3>Most roles were not entry-level.</h3>
+        <div class="bar-row"><div class="bar-label"><span>Experienced / senior scope</span><b>9 / 12</b></div><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="bar-row"><div class="bar-label"><span>3+ years explicitly required</span><b>7 / 12</b></div><div class="bar alt"><i style="width:58.33%"></i></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Degree or current enrollment stated</span><b>6 / 12</b></div><div class="bar"><i style="width:50%"></i></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Python mentioned</span><b>9 / 12</b></div><div class="bar alt"><i style="width:75%"></i></div></div>
+        <p style="font-size:12px;color:#8fa6a4">Counts apply only to this collected sample. “Mentioned” includes alternatives, preferences and bonus skills—not only hard requirements.</p>
+      </article>
+      <div class="job-findings">
+        <article class="finding"><b>01</b><h3>Software foundations remain the gate.</h3><p>Python or another language, APIs, data handling, Git, debugging and maintainable systems recur across employers.</p></article>
+        <article class="finding"><b>02</b><h3>Reliability beats chatbot polish.</h3><p>Employers ask for evaluations, monitoring, permissions, human review, rollback, security, deployment and support.</p></article>
+        <article class="finding"><b>03</b><h3>Business translation is a real advantage.</h3><p>Douglas's field-service and training experience can support workflow discovery, user empathy and adoption—but cannot be relabeled as software-engineering tenure.</p></article>
+        <article class="finding"><b>04</b><h3>The portfolio route exists, but it is demanding.</h3><p>Six listings omitted credentials; most still required substantial shipped work. Vexio was the clearest project-link route, yet it was a founding technical hire—not a mentored junior job.</p></article>
+      </div>
+    </div>
+
+    <div style="margin-top:60px" class="kicker">Capability target</div><h2>Six things the education path must produce.</h2>
+    <div class="skills">
+      <article class="skill"><div class="skill-top"><h3>Programming & debugging</h3><span class="tag">critical</span></div><p>Build unfamiliar changes, diagnose failures, write tests and explain the fix without blind agent dependence.</p><div class="ladder"><i class="on"></i><i class="on"></i><i></i><i></i></div></article>
+      <article class="skill"><div class="skill-top"><h3>APIs, data & integration</h3><span class="tag">critical</span></div><p>Authentication, webhooks, JSON, databases, error handling, observability and enterprise integration patterns.</p><div class="ladder"><i class="on"></i><i></i><i></i><i></i></div></article>
+      <article class="skill"><div class="skill-top"><h3>AI evaluation & reliability</h3><span class="tag">target layer</span></div><p>Test sets, structured output, model choice, RAG only when justified, human review, latency and cost.</p><div class="ladder"><i class="on"></i><i class="on"></i><i></i><i></i></div></article>
+      <article class="skill"><div class="skill-top"><h3>Security, privacy & access</h3><span class="tag">must not average away</span></div><p>Permissions, data minimization, prompt-injection boundaries, secrets, audit trails and rollback.</p><div class="ladder"><i class="on"></i><i></i><i></i><i></i></div></article>
+      <article class="skill"><div class="skill-top"><h3>Human-centered delivery</h3><span class="tag">existing advantage</span></div><p>Discover the real workflow, design for accessibility, measure outcomes and support adoption.</p><div class="ladder"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></article>
+      <article class="skill"><div class="skill-top"><h3>Team engineering</h3><span class="tag">evidence gap</span></div><p>Issues, review, source control, documentation, handoff and one real collaborative contribution.</p><div class="ladder"><i class="on"></i><i></i><i></i><i></i></div></article>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:12px">Illustrative ladder markers are planning emphasis—not measured proficiency scores. The diagnostic must establish the real baseline.</p>
+  </div>
+</section>
+
+<section id="plan" class="view">
+  <header class="hero"><div class="eyebrow">Protected execution plan</div><h1>Ten hours. <em>One clear lane.</em></h1><p>Eight committed study hours plus two contingency hours. Never enroll in overlapping full workloads or rely on unapproved aid.</p></header>
+  <div class="wrap">
+    <div class="plan">
+      <article class="week"><div class="kicker" style="color:var(--mint)">Weekly capacity</div><h2 style="font-size:38px">8 + 2 rule</h2><div class="hours"><div class="focus">8 focused</div><div class="buffer">2 buffer</div></div><p>The buffer absorbs difficult debugging, family interruptions and peak assignment weeks. A program whose normal published load exceeds ten hours does not fit, regardless of marketing flexibility.</p></article>
+      <div class="steps">
+        <article class="step"><h3>Admission reality check</h3><p>English and math placement; confirm whether upgrading is required and whether it is tuition-free.</p></article>
+        <article class="step"><h3>Independent skills diagnostic</h3><p>No-AI baseline → normal assisted build → AI-off transfer and defense, using synthetic data.</p></article>
+        <article class="step"><h3>One-course pilot</h3><p>Choose only after section time, homework range, prerequisites, total fees and withdrawal rules are known.</p></article>
+        <article class="step"><h3>Portfolio conversion</h3><p>Turn one existing project into documented problem → tested solution → human review → measured outcome.</p></article>
+        <article class="step"><h3>Targeted AI layer</h3><p>Add IBM/Microsoft/DeepLearning.AI only where diagnostic and posting evidence justify the gap.</p></article>
+        <article class="step"><h3>Application feedback loop</h3><p>Begin when role-specific evidence is defensible; use interviews and reviews to decide if more schooling is needed.</p></article>
+      </div>
+    </div>
+
+    <div style="margin-top:60px" class="kicker">Decision tree</div><h2>Before any payment.</h2>
+    <div class="tree">
+      <article class="branch"><h3>Admission</h3><p><b>Pass:</b> documented direct or achievable alternative entry.<br><b>Unresolved:</b> get written clarification.<br><b>Fail:</b> use targeted upgrading—not wishful equivalency.</p></article>
+      <article class="branch"><h3>Schedule</h3><p><b>Pass:</b> all class, homework, group and exam time fits 8+2.<br><b>Unresolved:</b> request a term map.<br><b>Fail:</b> reject or defer.</p></article>
+      <article class="branch"><h3>Funding</h3><p><b>Base case:</b> affordable before aid.<br><b>Confirmed grant:</b> lowers burden.<br><b>Loan:</b> financing, not a discount. Never treat eligibility as an approved award.</p></article>
+    </div>
+
+    <div style="margin-top:60px" class="kicker">Immediate checklist</div><h2>The next seven actions.</h2>
+    <div class="program-list">
+      <details class="program" open><summary><span class="rank">1</span><span><h3>Douglas College admissions check</h3><span class="meta">Confirm mature entry, English assessment and math equivalency.</span></span><span class="status cond">First</span></summary><div class="program-body"><div><h4>Ask</h4><p>Does MATU 0410 satisfy the program-level math requirement, not only CSIS 1175?</p></div><div><h4>Ask</h4><p>Which upcoming CSIS 1175 sections are evening, online or hybrid?</p></div><div><h4>Ask</h4><p>What is the realistic weekly total for one course including homework?</p></div></div></details>
+      <details class="program"><summary><span class="rank">2</span><span><h3>Run the one-week skills diagnostic</h3><span class="meta">Maximum eight hours, synthetic data, observed evidence.</span></span><span class="status go">Low risk</span></summary><div class="program-body"><div><h4>Pass A</h4><p>Explain an existing system, implement a small unfamiliar change, debug and test with AI off.</p></div><div><h4>Pass B</h4><p>Build a human-centered workflow with normal tools and an assistance log.</p></div><div><h4>Pass C</h4><p>Defend design decisions, fix a new failure and reject insecure or wrong AI suggestions.</p></div></div></details>
+      <details class="program"><summary><span class="rank">3</span><span><h3>Freeze one portfolio thread</h3><span class="meta">Suggested: service-request triage with human review and audit trail.</span></span><span class="status go">Compounding asset</span></summary><div class="program-body"><div><h4>Problem</h4><p>Document the user and workflow before adding AI.</p></div><div><h4>Engineering</h4><p>Compare deterministic and AI approaches; add tests, failure handling and privacy controls.</p></div><div><h4>Proof</h4><p>Record measured outcomes, deployment notes, issue history and handoff documentation.</p></div></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="sources" class="view">
+  <header class="hero"><div class="eyebrow">Evidence library</div><h1>Trace every <em>decision.</em></h1><p>Local research files are included with this dashboard. Official source links open in a new tab.</p></header>
+  <div class="wrap">
+    <div class="source-grid">
+      <article class="source"><h3>BC public-college pathways</h3><p>Seven program paths, admissions, delivery, workload, fees, funding and blockers.</p><a class="local" href="research/bc-public-college-ai-pathways-2026-10-22.md">Open local research note →</a><a href="https://www.douglascollege.ca/program/dpcsti" target="_blank" rel="noopener">Douglas College CSIS ↗</a><a href="https://www.bcit.ca/programs/computer-systems-certificate-part-time-5500cert/" target="_blank" rel="noopener">BCIT Computer Systems ↗</a><a href="https://langara.ca/programs-courses/computer-studies-diploma" target="_blank" rel="noopener">Langara Computer Studies ↗</a></article>
+      <article class="source"><h3>Canadian AI job evidence</h3><p>Twelve accessible postings, nine employers, full role records and evidence caveats.</p><a class="local" href="research/canadian_ai_jobs_2026-10-22.md">Open human-readable report →</a><a class="local" href="research/canadian_ai_jobs_2026-10-22.json">Open structured records →</a></article>
+      <article class="source"><h3>Flexible online credentials</h3><p>IBM, Microsoft, DeepLearning.AI, Google and CS50P options with credential distinctions.</p><a class="local" href="research/online-credentials-summary.md">Open local summary →</a><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" target="_blank" rel="noopener">IBM RAG & Agentic AI ↗</a><a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/" target="_blank" rel="noopener">Microsoft AI-103 ↗</a></article>
+      <article class="source"><h3>Selection and diagnostic framework</h3><p>Hard gates, 100-point model, assessment protocol, credential spine and visual safeguards.</p><a class="local" href="research/douglas-education-selection-framework.md">Open framework →</a></article>
+      <article class="source"><h3>StudentAid BC</h3><p>Part-time aid covers eligible education costs, not living expenses. Approval depends on residency, income, program and load.</p><a href="https://studentaidbc.ca/apply/part-time" target="_blank" rel="noopener">Part-time assistance ↗</a><a href="https://studentaidbc.ca/explore/grants-scholarships/bc-access-grant-part-time" target="_blank" rel="noopener">BC Access Grant ↗</a><a href="https://studentaidbc.ca/explore/grants-scholarships/adult-upgrading-grant-application" target="_blank" rel="noopener">Adult Upgrading Grant ↗</a></article>
+      <article class="source"><h3>Evidence limits</h3><p>No school was contacted, no admission or aid approval exists, no applications were submitted, and no employment outcome is promised. Job counts describe this sample only. Current prices and schedules must be reconfirmed.</p></article>
+    </div>
+    <div class="foot">Prepared for Douglas · Human-Centered AI Solutions Engineer transition · Research and source capture completed 22 October 2026. Dashboard generated from preserved local evidence. Use the Print / PDF button for an offline copy.</div>
+  </div>
+</section>
+</main>
+</div>
+<div class="toast" role="status" aria-live="polite">Copied</div>
+<script>
+const views=[...document.querySelectorAll('.view')];
+const nav=[...document.querySelectorAll('.nav button')];
+function showView(id,push=true){
+  if(!document.getElementById(id)) id='snapshot';
+  views.forEach(v=>v.classList.toggle('active',v.id===id));
+  nav.forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+  if(push) history.replaceState(null,'','#'+id);
+  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+}
+nav.forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.getElementById('homeBtn').addEventListener('click',()=>showView('snapshot'));
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+const toast=document.querySelector('.toast');
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);toast.textContent='Next action copied';}catch(e){toast.textContent='Copy unavailable — select the action text';}toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
+document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.program[data-kind]').forEach(p=>p.classList.toggle('hidden',f!=='all'&&p.dataset.kind!==f));}));
+window.addEventListener('hashchange',()=>showView(location.hash.slice(1)||'snapshot',false));
+showView(location.hash.slice(1)||'snapshot',false);
+</script>
+</body>
+</html>

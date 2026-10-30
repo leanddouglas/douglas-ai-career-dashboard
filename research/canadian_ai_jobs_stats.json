@@ -1,0 +1,15 @@
+{
+  "postings": 12,
+  "employers": 9,
+  "education": {
+    "degree": 5,
+    "enrolled": 1,
+    "not_stated": 6
+  },
+  "numeric_3plus": 7,
+  "python_mentions_including_options_and_bonus": 9,
+  "bc_locations": 3,
+  "remote_canada_including_oyster_caveat": 5,
+  "explicit_senior_titles": 6,
+  "junior_or_intern_titles": 2
+}
