@@ -1,6 +1,6 @@
 # Douglas AI Career Dashboard
 
-A static, evidence-led dashboard for Douglas's transition toward human-centered applied AI and automation work. The five-program education shortlist is restricted to public colleges and universities located in British Columbia.
+A static, evidence-led dashboard for Douglas's transition toward human-centered applied AI and automation work. The five primary education candidates are public colleges and universities in British Columbia; selected Coursera Professional Certificates are retained as skills and potential PLAR evidence, not guaranteed transfer credit.
 
 ## Local use
 
